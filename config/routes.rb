@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  get "tweets/index"
+  get "tweets/new"
+  get "tweets/create"
+  get "tweets/destroy"
+  resources :tweets
   resources :users
-  root "users#index"
+  root "tweets#index"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

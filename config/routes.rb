@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :tweets
   resources :users
+  resources :likes
   root "tweets#index"
 
   get "up" => "rails/health#show", as: :rails_health_check

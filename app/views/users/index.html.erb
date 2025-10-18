@@ -1,9 +1,7 @@
-<% @users.each do |e|%>
- 
- <%= e.uid %>
- <%=e.pass %>
-  <%= link_to '削除', user_path(e), data: {turbo_method: :delete} %>
-  <br>
+<h1>プロフィール画面</h1>
+<% if session[:login_uid] %>
+  <p>ログイン中ユーザー: <%= session[:login_uid] %></p>
 
+<% else %>
+  <p>ログインしていません</p>
 <% end %>
-<%= link_to "新規追加", new_user_path %>

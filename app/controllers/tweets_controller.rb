@@ -1,7 +1,11 @@
 class TweetsController < ApplicationController
-  def index
+def index
     @tweets = Tweet.all
+    # ログイン中のユーザーを取得
+    @user = User.find_by(uid: session[:login_uid]) if session[:login_uid]
   end
+
+
 
   def new
     @tweet = Tweet.new

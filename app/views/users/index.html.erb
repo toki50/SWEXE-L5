@@ -1,7 +1,8 @@
-<h1>プロフィール画面</h1>
-<% if session[:login_uid] %>
-  <p>ログイン中ユーザー: <%= session[:login_uid] %></p>
-
-<% else %>
-  <p>ログインしていません</p>
+<% @users.each do |user| %>
+  <p>
+    uid: <%= user.uid %>, password_digest: <%= user.password_digest %>
+    <%= link_to '削除', user_path(user), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+  </p>
 <% end %>
+
+<%= link_to '新規登録', new_user_path %>

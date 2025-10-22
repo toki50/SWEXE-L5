@@ -4,11 +4,11 @@ class TopController < ApplicationController
   end
 
   def login
-        user = User.find_by(uid: params[:uid])
+        user=User.find_by(uid: params[:uid]) 
 
     # ユーザーが存在して、パスワードが一致する場合
-    if user && user.pass == params[:pass]
-      session[:login_uid] = user.uid
+    if user and user.autheticate(params[:pass]) and user.autheticate(params[:uid])
+      session[:login_uid] = params[:uid]
       redirect_to tweets_path
     end
   end

@@ -1,15 +1,12 @@
 <%= form_with model: @user do |f| %>
-  <div>
+
     <%= f.label :uid, 'UID' %>
     <%= f.text_field :uid %>
-  </div>
+    <%= f.label :password, 'パスワード' %>
+    <%= f.password_field :password %>
+  　<%= f.label :password_confirmation, 'パスワード(確認)' %>
+　　<%= f.text_field :password_confirmation %>
 
-  <div>
-    <%= f.label :pass, 'PASS' %>
-    <%= f.password_field :pass %>
-  </div>
-
-  <div>
     <%= f.submit '登録' %>
-  </div>
+  
 <% end %>

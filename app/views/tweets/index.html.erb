@@ -11,10 +11,10 @@
   <br>
 <% end %>
 
-<% if session[:login] %>
-  <%= link_to "プロフィール画面", users_main_path %><br>
+<% if current_user %>
+  <p>ログイン中ユーザー: <%= current_user.uid %></p>
 <% end %>
 
 <%= link_to "新規追加", new_tweet_path %><br>
-<%= link_to"ログイン", top_main_path %><br>
-<%= link_to"ログアウト", top_logout_path %><br>
+<%= link_to "ログイン", top_main_path %><br>
+<%= link_to "ログアウト", top_logout_path %><br>

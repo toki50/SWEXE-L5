@@ -18,24 +18,22 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path, notice: "ユーザーを作成しました"
+      # 登録後にログイン状態にしてツイート一覧へ
+      session[:login_uid] = @user.uid
+      redirect_to tweets_path, notice: "登録完了しました！"
     else
       render :new
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
+  private
+
+  def user_params
+    params.require(:user).permit(:uid, :password, :password_confirmation)
   end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: "ユーザー情報を更新しました"
-    else
-      render :edit
-    end
-  end
+
+ 
 
   def destroy
     @user = User.find(params[:id])
@@ -43,9 +41,7 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "ユーザーを削除しました"
   end
 
-  private
+  
 
-  def user_params
-    params.require(:user).permit(:uid, :pass)
-  end
-end
+ 
+end 
